@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PrimedPoll</string>
+    <string name="log_in">Log In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="or_sign_up_using">or sign up using</string>
+
 </resources>

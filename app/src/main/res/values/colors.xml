@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#FF5722</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colorMain">#F57C00</color>
-    <color name="transparentColorMain">#80F88C00</color>
-    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorOrange">#FB8C00</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+
+
 </resources>
