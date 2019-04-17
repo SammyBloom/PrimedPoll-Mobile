@@ -45,17 +45,17 @@
                 android:layout_marginTop="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorMain" />
+                android:textColor="@color/colorOrange" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="voting made easy"
+                android:text="Voting Made Easy"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
                 android:textStyle="italic"
-                android:textColor="@color/colorMain"
+                android:textColor="@color/colorBlack"
                 android:layout_marginBottom="10dp"/>
 
             <!-- Email Label -->

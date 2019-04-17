@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/complete_registration"
+            android:textColor="@color/colorWhite"
+            android:textSize="28sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/rounded_edittext2"
+                android:drawableStart="@drawable/ic_email_black_24dp"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:inputType="text"
+                android:padding="8dp"
+android:layout_marginLeft="32dp"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorGrey"
+                android:hint="@string/email"
+                android:layout_marginRight="32dp"
+                android:drawablePadding="8dp"
+                android:layout_marginBottom="21dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/rounded_edittext2"
+                android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+                android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+                android:inputType="text"
+                android:padding="8dp"
+                android:hint="@string/password"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorGrey"
+                android:drawablePadding="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="21dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@drawable/rounded_edittext2"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawableLeft="@drawable/ic_call_black_24dp"
+                android:inputType="number"
+                android:padding="8dp"
+                android:drawablePadding="8dp"
+                android:hint="@string/phone_number"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorGrey"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="21dp"/>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@drawable/rounded_edittext2"
+                    android:inputType="textEmailAddress"
+                    android:padding="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:textColorHint="@color/colorGrey"
+                    android:textColor="@color/colorWhite"
+
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginBottom="21dp"
+                    android:hint="@string/date_of_birth"
+                    android:gravity="start"
+                    />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="42dp"
+            android:background="@drawable/button_look3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="36dp"
+                android:text="@string/interests"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+
+            <GridLayout
+                android:id="@+id/grid_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:rowCount="2"
+
+                >
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button1"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/music"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_look"
+                    android:gravity="center"
+
+                    />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button2"
+                    android:layout_gravity="left|top"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/movies"
+                    android:textColor="@color/colorWhite"
+                    android:gravity="center"
+
+                    android:background="@drawable/button_look"                   />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button3"
+                    android:layout_gravity="left|top"
+                    android:text="@string/history"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_look"
+                    android:gravity="center"
+
+                    />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button4"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/cooking"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_look"
+                    android:gravity="center"
+
+                    />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button5"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/sport"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_look"
+                    android:gravity="center"
+
+                    />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button6"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/design"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_look"
+                    android:gravity="center"
+
+                    />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/button7"
+                    android:layout_gravity="left|top"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/books"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_look"
+                    android:layout_marginBottom="42dp"
+                    android:gravity="center"
+
+                    />
+
+            </GridLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="24dp"
+                app:backgroundTint="@color/colorPrimaryDark"
+                android:src="@drawable/ic_add_circle_outline_black_24dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
