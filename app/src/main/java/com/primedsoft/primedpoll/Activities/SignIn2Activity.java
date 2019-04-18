@@ -3,6 +3,8 @@ package com.primedsoft.primedpoll.Activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.primedsoft.primedpoll.R;
+
 public class SignIn2Activity extends AppCompatActivity {
 
     @Override
