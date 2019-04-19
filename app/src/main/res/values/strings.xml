@@ -3,9 +3,29 @@
     <string name="log_in">Log In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="dont_have_an_account">Dont have An Account?</string>
+    <string name="sign_up">Sign Up!</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="sign_in">Sign In</string>
-    <string name="or_sign_up_using">or sign up using</string>
-
+    <string name="or_sign_up_using">also sign in using</string>
+    <string name="or">or</string>
+    <string name="facebook_app_id">360049724606739</string>
+    <string name="fb_login_protocol_scheme">fb360049724606739</string>
+    <string name="complete_registration">Complete Registration</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="interests">Interests</string>
+    <string name="music">Music</string>
+    <string name="movies">Movies</string>
+    <string name="history">History</string>
+    <string name="cooking">Cooking</string>
+    <string name="sport">Sport</string>
+    <string name="design">Design</string>
+    <string name="books">Book</string>
+    <string name="choice">Choose 5 or more</string>
+    <string name="name">name</string>
+    <string name="email2">email</string>
+    <string name="not_logged">not_logged</string>
 </resources>
