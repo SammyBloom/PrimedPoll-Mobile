@@ -1,139 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    android:fitsSystemWindows="true"
     tools:context=".activity.SignUp">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/signup_progressbar"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="?android:attr/progressBarStyle"
-            android:layout_centerInParent="true"
-            android:indeterminate="true"
-            android:indeterminateDrawable="@drawable/progressbar"
-            android:visibility="gone"/>
+            android:layout_height="580dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingTop="56dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+            <View
+                android:id="@+id/colored_view"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:background="@color/colorOrange"/>
 
-            <ImageView
-                android:src="@mipmap/logo"
+            <ProgressBar
+                android:id="@+id/signup_progressbar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:indeterminate="true"
+                android:indeterminateDrawable="@drawable/progressbar"
+                android:elevation="8dp"
+                android:visibility="gone"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginBottom="24dp"
-                android:layout_gravity="center_horizontal" />
+                android:layout_height="90dp"
+                android:src="@mipmap/logo"
+                android:layout_marginTop="40dp"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"/>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="PrimedPoll"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorOrange" />
+                android:orientation="vertical"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Voting Made Easy"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                android:textColor="@color/colorBlack"
-                android:layout_marginBottom="10dp"/>
-
-            <!-- Email Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
-
-                <EditText android:id="@+id/input_email"
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:background="@drawable/rounded_edittext"
-                    android:drawableLeft="@drawable/ic_mail_black_24dp"
-                    android:drawablePadding="16dp"
-                    android:hint="Email" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_marginTop="180dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    app:contentPadding="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardUseCompatPadding="true"
+                    app:cardElevation="4dp">
 
-            <!-- Password Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                <EditText android:id="@+id/input_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:background="@drawable/rounded_edittext"
-                    android:drawableLeft="@drawable/ic_lock_grey_24dp"
-                    android:drawablePadding="16dp"
-                    android:hint="Password"/>
-            </android.support.design.widget.TextInputLayout>
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/colorBlack">
 
-            <!--Confirm Password Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
+                            <EditText
+                                android:textColor="@color/colorBlack"
+                                android:id="@+id/input_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Email" />
 
-                <EditText android:id="@+id/input_confirm_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rounded_edittext"
-                    android:inputType="textPassword"
-                    android:drawableLeft="@drawable/ic_lock_grey_24dp"
-                    android:drawablePadding="16dp"
-                    android:hint="Confirm Password"/>
-            </android.support.design.widget.TextInputLayout>
+                        </android.support.design.widget.TextInputLayout>
 
-            <!-- Terms and Conditions -->
-            <CheckBox
-                android:id="@+id/tac_signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:text="By clicking you accept our terms and conditions"
-                android:gravity="center"
-                android:textSize="16dp"/>
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/colorBlack">
 
-            <!-- Signup Button -->
+                            <EditText
+                                android:textColor="@color/colorBlack"
+                                android:id="@+id/input_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Password"
+                                android:inputType="textPassword"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="@color/colorBlack">
+
+                            <EditText
+                                android:textColor="@color/colorBlack"
+                                android:id="@+id/input_confirm_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Confirm Password"
+                                android:inputType="textPassword"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <!-- Terms and Conditions -->
+                        <CheckBox
+                            android:id="@+id/tac_signup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="36dp"
+                            android:textColor="@color/colorOrange"
+                            android:text="By clicking you accept our terms and conditions"
+                            android:gravity="center"
+                            android:textSize="16sp"/>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_signup"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Sign Up"
+                android:layout_below="@id/colored_view"
                 android:background="@drawable/curved_btn"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
                 android:textColor="@color/colorWhite"
-                android:padding="12dp"
-                android:text="Sign Up"/>
-        </LinearLayout>
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="175dp"
+                android:elevation="8dp"
+                android:padding="4dp"/>
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_signup"
+                android:layout_marginTop="18dp"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
 
-</ScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account?  "
+                    android:textStyle="italic"
+                    android:textSize="16sp"
+                    android:layout_below="@id/btn_signup" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign in"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="16sp"
+                    android:clickable="true"
+                    android:layout_below="@id/btn_signup" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
