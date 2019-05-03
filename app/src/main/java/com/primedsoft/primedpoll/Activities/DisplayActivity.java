@@ -15,17 +15,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.gson.JsonObject;
 import com.primedsoft.primedpoll.R;
 
-public class ProfileActivity extends AppCompatActivity {
+public class DisplayActivity extends AppCompatActivity {
     public static final String GOOGLE_ACCOUNT = "google_account";
     private TextView profileName, profileEmail;
     private GoogleSignInClient googleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_display);
         profileName = findViewById(R.id.profile_text);
         profileEmail = findViewById(R.id.profile_email);
         ImageView profileImage = findViewById(R.id.profile_image);
@@ -58,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         //On Succesfull signout we navigate the user back to LoginActivity
-                        Intent intent = new Intent(ProfileActivity.this, SignInActivity.class);
+                        Intent intent = new Intent(DisplayActivity.this, SignInActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }

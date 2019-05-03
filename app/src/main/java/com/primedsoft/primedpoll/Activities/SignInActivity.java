@@ -18,7 +18,6 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookRequestError;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
@@ -93,7 +92,7 @@ public class SignInActivity extends AppCompatActivity {
                     useFacebookLoginInformation(currentAccessToken);
 
                 } else {
-                    Intent intent = new Intent(SignInActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(SignInActivity.this, DisplayActivity.class);
                     intent.putExtra(getString(R.string.not_logged), "Not Logged In");
                     startActivity(intent);
                 }
@@ -168,7 +167,7 @@ public class SignInActivity extends AppCompatActivity {
                     email = object.getString("email");
                     String image = object.getJSONObject("picture").getJSONObject("data").getString("url");
                     Toast.makeText(getApplicationContext(), "Login Success with facebook", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignInActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(SignInActivity.this, DisplayActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("email", email);
                     startActivity(intent);
@@ -176,7 +175,7 @@ public class SignInActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(SignInActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(SignInActivity.this, DisplayActivity.class);
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
                 startActivity(intent);
@@ -213,8 +212,8 @@ public class SignInActivity extends AppCompatActivity {
 
     private void onLoggedIn(GoogleSignInAccount googleSignInAccount) {
 
-        Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra(ProfileActivity.GOOGLE_ACCOUNT, googleSignInAccount);
+        Intent intent = new Intent(this, DisplayActivity.class);
+        intent.putExtra(DisplayActivity.GOOGLE_ACCOUNT, googleSignInAccount);
 
         startActivity(intent);
         finish();
