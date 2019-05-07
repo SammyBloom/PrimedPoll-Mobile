@@ -31,14 +31,6 @@ public interface ApiInterface {
    @POST("api/password/reset")
     Call<Data> resetPassword(@Field("email") String email);
 
-    @FormUrlEncoded
-    @POST("api/password/change ")
-    Call<Data> changePassword(@Field("email") String email,
-                              @Field(""));
-
-
-
 }
 
 
-}

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "322292036285",
+    "firebase_url": "https://primed-poll-a7a60.firebaseio.com",
+    "project_id": "primed-poll-a7a60",
+    "storage_bucket": "primed-poll-a7a60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322292036285:android:2c96b443bfc0883b",
+        "android_client_info": {
+          "package_name": "com.primedsoft.primedpoll"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322292036285-giso6o7aft890jvqqupua781cdv50sj0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.primedsoft.primedpoll",
+            "certificate_hash": "cec29a54c422991f20900608f23e680fc333191b"
+          }
+        },
+        {
+          "client_id": "322292036285-j3hbtrh4nq13fegq98g90ptpamedmqj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFimQ8IsBVHIVPtimV-uNrC9LUFD6USP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322292036285-j3hbtrh4nq13fegq98g90ptpamedmqj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

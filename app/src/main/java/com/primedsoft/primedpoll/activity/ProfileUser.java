@@ -1,25 +1,44 @@
 package com.primedsoft.primedpoll.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
 import com.primedsoft.primedpoll.Adapter.InterestAdapter;
 import com.primedsoft.primedpoll.R;
+import com.squareup.picasso.Picasso;
 
-public class ProfileUser extends AppCompatActivity {
+import java.util.Objects;
+
+public class ProfileUser extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private TextView user_name, user_email, user_phone, user_dob;
     private ImageView profile_img;
     private RecyclerView myInterest;
     private InterestAdapter myAdapter;
+    private GoogleSignInOptions gso;
+    private GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +46,7 @@ public class ProfileUser extends AppCompatActivity {
         setContentView(R.layout.activity_profile_user);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.profile_user_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         profile_img = findViewById(R.id.profile_image_user);
         user_name = findViewById(R.id.username_user);
@@ -38,10 +57,79 @@ public class ProfileUser extends AppCompatActivity {
         myInterest = findViewById(R.id.recycler_interest);
 ////        Rounded images using picasso
 //        Picasso.get().load().placeholder(R.drawable.profile_pic).transform(new CircleTransform()).into(profile_img);
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+
+//        logoutBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FirebaseAuth.getInstance().signOut();
+//                Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(
+//                        new ResultCallback<Status>() {
+//                            @Override
+//                            public void onResult(Status status) {
+//                                if (status.isSuccess()){
+//                                    gotoMainActivity();
+//                                }else{
+//                                    Toast.makeText(getApplicationContext(),"Session not close",Toast.LENGTH_LONG).show();
+//                                }
+//                            }
+//                        });
+//            }
+//        });
     }
 
-    public void clickEdit(android.view.View v){
-        switch (v.getId()){
+    @Override
+    protected void onStart() {
+        super.onStart();
+        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
+        if (opr.isDone()) {
+            GoogleSignInResult result = opr.get();
+            handleSignInResult(result);
+        } else {
+            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                @Override
+                public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
+                    handleSignInResult(googleSignInResult);
+                }
+            });
+        }
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        if (result.isSuccess()) {
+            GoogleSignInAccount account = result.getSignInAccount();
+            user_name.setText(account.getDisplayName());
+            user_email.setText(account.getEmail());
+            try {
+                Picasso.get()
+                        .load(account.getPhotoUrl())
+                        .into(profile_img);
+            } catch (NullPointerException e) {
+                Toast.makeText(getApplicationContext(), "image not found", Toast.LENGTH_LONG).show();
+            }
+
+        } else {
+            gotoMainActivity();
+        }
+    }
+
+    private void gotoMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
+    public void clickEdit(android.view.View v) {
+        switch (v.getId()) {
             case R.id.profile_image_user:
 //                do something
                 break;
@@ -120,4 +208,10 @@ public class ProfileUser extends AppCompatActivity {
                 break;
         }
     }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }
+
