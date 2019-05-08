@@ -1,8 +1,8 @@
 package com.primedsoft.primedpoll.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Patterns;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.primedsoft.primedpoll.Data;
 import com.primedsoft.primedpoll.R;
-import com.primedsoft.primedpoll.SignUp2;
+import com.primedsoft.primedpoll.activity.SignUp;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
 
@@ -36,7 +36,7 @@ signUpText = findViewById(R.id.sign_up_text);
 signUpText.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(SignIn2Activity.this, SignUp2.class));
+        startActivity(new Intent(SignIn2Activity.this, SignUp.class));
     }
 });
 
