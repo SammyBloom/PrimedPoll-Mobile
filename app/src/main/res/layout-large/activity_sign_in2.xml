@@ -20,16 +20,8 @@
             android:background="@color/colorOrange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/colorWhite"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
     </LinearLayout>
 
 
@@ -146,6 +138,8 @@
                                     android:textColor="@color/colorBlack" />
                             </android.support.design.widget.TextInputLayout>
                             <TextView
+                                android:fontFamily="@font/allan"
+
                                 android:layout_marginTop="8dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -153,7 +147,7 @@
                                 android:layout_marginEnd="4dp"
                                 android:text="@string/forgot_password"
                                 android:textColor="@color/colorBlack"
-                                android:textSize="14sp"
+                                android:textSize="16sp"
                                 android:textStyle="italic"
                                 android:layout_gravity="end"/>
                         </LinearLayout>
@@ -162,7 +156,7 @@
 
                     <FrameLayout
                         android:id="@+id/sign_in_frame"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
                         android:elevation="24dp"
@@ -172,7 +166,7 @@
                         <android.support.v7.widget.AppCompatButton
                             android:id="@+id/sign_in_button"
 
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="8dp"
@@ -194,22 +188,36 @@
 
 
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:gravity="center">
 
-                    <android.support.v7.widget.AppCompatImageButton
-                        android:id="@+id/facebook_sign_in"
-                        style="?android:buttonBarButtonStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:background="@drawable/edit_text_socials"
-                        android:src="@drawable/ic_facebook" />
+                   <FrameLayout
+                    android:id="@+id/FrameLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.facebook.login.widget.LoginButton
+                        android:id="@+id/login_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+                       <android.support.v7.widget.AppCompatImageButton
+                           android:id="@+id/facebook_sign_in"
+                           style="?android:buttonBarButtonStyle"
+                           android:layout_width="60dp"
+                           android:layout_height="60dp"
+                           android:layout_marginStart="8dp"
+                           android:layout_marginLeft="8dp"
+                           android:layout_marginEnd="8dp"
+                           android:layout_marginRight="8dp"
+                           android:background="@drawable/edit_text_socials2"
+                           android:src="@drawable/ic_facebook" />
+                </FrameLayout>
+
 
                     <android.support.v7.widget.AppCompatImageButton
                         android:id="@+id/google_sign_in"
@@ -220,7 +228,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
-                        android:background="@drawable/edit_text_socials"
+                        android:background="@drawable/edit_text_socials2"
                         android:src="@drawable/ic_google" />
 
                 </LinearLayout>
@@ -241,14 +249,15 @@
                         android:textStyle="italic" />
                     <TextView
                         android:id="@+id/sign_up_text"
+                        android:fontFamily="@font/allan"
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:text="@string/sign_up"
-                        android:textColor="@color/colorOrange"
-                        android:textSize="14sp"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
                         android:textStyle="italic" />
                 </LinearLayout>
             </LinearLayout>

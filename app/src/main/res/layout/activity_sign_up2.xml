@@ -30,6 +30,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+
     </LinearLayout>
 
 
@@ -118,6 +120,7 @@
 
 
                                 <EditText
+
                                     android:id="@+id/sign_up_email"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -135,6 +138,7 @@
                                 >
 
                                 <EditText
+
                                     android:id="@+id/sign_up_password"
                                     android:textSize="14sp"
                                     android:layout_width="match_parent"
@@ -153,6 +157,7 @@
 
 
                                 <EditText
+
                                     android:id="@+id/sign_up_confirm_password"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -162,6 +167,8 @@
                                     android:textColor="@color/colorBlack" />
                             </android.support.design.widget.TextInputLayout>
                             <CheckBox
+                                android:fontFamily="@font/allan"
+
                                 android:id="@+id/tac_signup"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -169,7 +176,7 @@
                                 android:layout_marginBottom="16dp"
                                 android:text="@string/terms_and_conditions"
                                 android:gravity="center"
-                                android:textSize="14sp"/>
+                                android:textSize="18sp"/>
 
 
                         </LinearLayout>
@@ -186,6 +193,7 @@
                         >
 
                         <android.support.v7.widget.AppCompatButton
+android:textSize="18sp"
                             android:id="@+id/sign_up_button"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -251,6 +259,8 @@
                         android:textSize="14sp"
                         android:textStyle="italic" />
                     <TextView
+                        android:fontFamily="@font/roboto_thin"
+
                         android:clickable="true"
                         android:focusable="true"
                         android:id="@+id/sign_in_text"
@@ -261,7 +271,7 @@
                         android:text="@string/sign_in"
                         android:textColor="@color/colorOrange"
                         android:textSize="14sp"
-                        android:textStyle="italic" />
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

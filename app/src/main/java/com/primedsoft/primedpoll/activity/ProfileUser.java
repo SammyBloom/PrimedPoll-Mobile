@@ -67,7 +67,13 @@ public class ProfileUser extends AppCompatActivity implements GoogleApiClient.On
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
+String getName = getIntent().getStringExtra("name");
+String getEmail = getIntent().getStringExtra("email");
+String getPhotoUrl = getIntent().getStringExtra("profile_pic");
 
+user_name.setText(getName);
+user_email.setText(getEmail);
+Picasso.get().load(getPhotoUrl).into(profile_img);
 //        logoutBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
