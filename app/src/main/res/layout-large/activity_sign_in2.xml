@@ -200,7 +200,7 @@
                     android:gravity="center">
 
                     <android.support.v7.widget.AppCompatImageButton
-                        android:id="@+id/button2"
+                        android:id="@+id/facebook_sign_in"
                         style="?android:buttonBarButtonStyle"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
@@ -212,7 +212,7 @@
                         android:src="@drawable/ic_facebook" />
 
                     <android.support.v7.widget.AppCompatImageButton
-                        android:id="@+id/button3"
+                        android:id="@+id/google_sign_in"
                         style="?android:buttonBarButtonStyle"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
