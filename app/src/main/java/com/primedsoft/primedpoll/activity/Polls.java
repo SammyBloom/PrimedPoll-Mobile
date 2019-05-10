@@ -64,8 +64,8 @@ public class Polls extends AppCompatActivity {
                     return feedsFragment;
 
                 case 1:
-                    AnsweredPolls answeredpPollsFragment = new AnsweredPolls();
-                    return answeredpPollsFragment;
+                    AnsweredPolls answeredPollsFragment = new AnsweredPolls();
+                    return answeredPollsFragment;
             }
             return null;
         }

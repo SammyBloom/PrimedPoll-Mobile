@@ -23,8 +23,7 @@
                 android:id="@+id/user_img"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/profile_pic"
-                android:clickable="true" />
+                android:src="@drawable/profile_pic" />
 
         </RelativeLayout>
 
@@ -34,7 +33,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="35dp"
-            android:layout_marginLeft="90dp">
+            android:layout_marginStart="90dp">
 
             <TextView
                 android:id="@+id/question"
@@ -49,24 +48,28 @@
                 android:layout_height="wrap_content">
 
                 <RadioButton
+                    android:id="@+id/radio1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Heaven"
                     android:textSize="16sp"/>
 
                 <RadioButton
+                    android:id="@+id/radio2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hell"
                     android:textSize="16sp"/>
 
                 <RadioButton
+                    android:id="@+id/radio3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mars"
                     android:textSize="16sp"/>
 
                 <RadioButton
+                    android:id="@+id/radio4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Purgatory"
@@ -85,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:textSize="16sp" />
 
         </RelativeLayout>
