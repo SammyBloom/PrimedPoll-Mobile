@@ -20,6 +20,8 @@ Users are expected to first signup (for new users) or login (existing users).
 
 ![Screenshot_20190510-124623 1](https://user-images.githubusercontent.com/32566612/57525362-6e697c80-7322-11e9-914a-097faeccdbd7.jpg)
 
+![Screenshot_20190510-125319](https://user-images.githubusercontent.com/32566612/57525703-4c242e80-7323-11e9-86ce-8e2ed9db3946.jpg)
+
 Complete registeration and choose the different categories your interest lies.
 
 Participate either by creating polls or voting on a poll connected to your interest.
