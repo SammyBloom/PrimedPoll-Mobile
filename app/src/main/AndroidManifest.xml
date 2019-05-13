@@ -25,8 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ProfileUser"></activity>
+        <activity android:name=".activity.ProfileMain"></activity>
+        <activity android:name=".activity.SignUp"></activity>
         <activity android:name=".Activities.MainActivity"></activity>
-        <activity android:name=".Activities.SignIn2Activity"></activity>
+        <activity android:name=".Activities.SignIn2Activity">
+
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
