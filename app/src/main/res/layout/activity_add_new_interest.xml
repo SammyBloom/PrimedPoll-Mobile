@@ -64,5 +64,4 @@
         android:src="@drawable/ic_done_24dp"
         />
 
-
 </android.support.constraint.ConstraintLayout>
