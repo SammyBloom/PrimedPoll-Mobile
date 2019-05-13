@@ -145,7 +145,6 @@ public class SignUp extends AppCompatActivity {
             public void onFailure(Call<Data> call, Throwable t) {
                 t.getMessage();
                 Toast.makeText(SignUp.this, "Connection Error! Restart Network", Toast.LENGTH_LONG).show();
-
             }
         });
     }
