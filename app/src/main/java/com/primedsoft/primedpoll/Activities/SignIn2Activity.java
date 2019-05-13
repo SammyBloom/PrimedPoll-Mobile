@@ -1,23 +1,21 @@
 package com.primedsoft.primedpoll.Activities;
 
 import android.content.Intent;
-<<<<<<< HEAD
-=======
 import android.content.pm.LauncherApps;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
->>>>>>> 0ffecd198785f0e56e08472b67980b5665efdc33
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatImageButton;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-=======
+
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -42,9 +40,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
->>>>>>> 0ffecd198785f0e56e08472b67980b5665efdc33
 import com.primedsoft.primedpoll.Data;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.activity.ProfileUser;
 import com.primedsoft.primedpoll.activity.SignUp;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
@@ -60,14 +58,13 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.HEAD;
 
-public class SignIn2Activity extends AppCompatActivity {
+public class SignIn2Activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText signInEmail, signInPassword;
     String email, password;
     AppCompatButton signInButton;
     TextView signUpText;
-<<<<<<< HEAD
-=======
     private static final String TAG = "SignInActivity";
     private AppCompatImageButton googleSignInButton;
     private GoogleApiClient googleApiClient;
@@ -80,8 +77,8 @@ public class SignIn2Activity extends AppCompatActivity {
     private LoginButton loginButton;
     private String id;
     private URL profile_pic = null;
+    private String name;
 
->>>>>>> 0ffecd198785f0e56e08472b67980b5665efdc33
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_sign_in2);
@@ -89,7 +86,6 @@ public class SignIn2Activity extends AppCompatActivity {
         signInEmail = findViewById(R.id.sign_in_email);
         signInPassword = findViewById(R.id.sign_in_password);
         signInButton = findViewById(R.id.sign_in_button);
-<<<<<<< HEAD
 signUpText = findViewById(R.id.sign_up_text);
 signUpText.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -97,15 +93,13 @@ signUpText.setOnClickListener(new View.OnClickListener() {
         startActivity(new Intent(SignIn2Activity.this, SignUp.class));
     }
 });
-=======
         signUpText = findViewById(R.id.sign_up_text);
         signUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignIn2Activity.this, SignUp2.class));
+                startActivity(new Intent(SignIn2Activity.this, SignUp.class));
             }
         });
->>>>>>> 0ffecd198785f0e56e08472b67980b5665efdc33
 
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -114,8 +108,6 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 loginUser();
             }
         });
-<<<<<<< HEAD
-=======
 
         firebaseAuth = FirebaseAuth.getInstance();
         //this is where we start the Auth state Listener to listen for whether the user is signed in or not
@@ -228,7 +220,6 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 loginButton.performClick();
             }
         });
->>>>>>> 0ffecd198785f0e56e08472b67980b5665efdc33
     }
 
     private void loginUser() {
@@ -281,13 +272,8 @@ signUpText.setOnClickListener(new View.OnClickListener() {
         }
         return false;
     }
-<<<<<<< HEAD
-=======
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -350,5 +336,8 @@ signUpText.setOnClickListener(new View.OnClickListener() {
     }
 
 
->>>>>>> 0ffecd198785f0e56e08472b67980b5665efdc33
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }
