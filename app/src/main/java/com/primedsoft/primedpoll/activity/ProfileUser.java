@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,8 +22,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.google.firebase.auth.FirebaseAuth;
 import com.primedsoft.primedpoll.Adapter.InterestAdapter;
 import com.primedsoft.primedpoll.R;
 import com.squareup.picasso.Picasso;
@@ -129,10 +126,9 @@ Picasso.get().load(getPhotoUrl).into(profile_img);
     }
 
     private void gotoMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent mIntent = new Intent(this, MainActivity.class);
+        startActivity(mIntent);
     }
-
 
     public void clickEdit(android.view.View v) {
         switch (v.getId()) {
