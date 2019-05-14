@@ -21,7 +21,10 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".activity.Polls"></activity>
-        <activity android:name=".CreatePoll">
+        <activity android:name=".CreatePoll"></activity>
+        <activity android:name=".activity.ProfileUser"></activity>
+        <activity android:name=".activity.ProfileMain"></activity>
+        <activity android:name=".activity.SignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -29,9 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ProfileUser"></activity>
-        <activity android:name=".activity.ProfileMain"></activity>
-        <activity android:name=".activity.SignUp"></activity>
         <activity android:name=".activity.MainActivity"></activity>
         <activity android:name=".Activities.MainActivity"></activity>
         <activity android:name=".Activities.SignIn2Activity">
