@@ -140,7 +140,6 @@ public class SignUp extends AppCompatActivity {
                 }
             }
 
-
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
                 t.getMessage();
