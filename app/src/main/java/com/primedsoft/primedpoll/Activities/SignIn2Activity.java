@@ -36,6 +36,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.primedsoft.primedpoll.Data;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.activity.Polls;
 import com.primedsoft.primedpoll.activity.ProfileUser;
 import com.primedsoft.primedpoll.activity.SignUp;
 import com.primedsoft.primedpoll.api.ApiInterface;
@@ -53,7 +54,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class SignIn2Activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText signInEmail, signInPassword;
     String email, password;
@@ -69,8 +69,9 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
     private CallbackManager callbackManager;
     private AppCompatImageButton facebookSignInButton;
     private LoginButton loginButton;
-    private String id, name;
+    private String id;
     private URL profile_pic = null;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,14 +80,21 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
         signInEmail = findViewById(R.id.sign_in_email);
         signInPassword = findViewById(R.id.sign_in_password);
         signInButton = findViewById(R.id.sign_in_button);
-        signUpText = findViewById(R.id.sign_up_text);
-
-        signUpText.setOnClickListener(new View.OnClickListener() {
+signUpText = findViewById(R.id.sign_up_text);
+signUpText.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         startActivity(new Intent(SignIn2Activity.this, SignUp.class));
     }
 });
+        signUpText = findViewById(R.id.sign_up_text);
+        signUpText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignIn2Activity.this, SignUp.class));
+            }
+        });
+
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,8 +216,6 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
         });
     }
 
-
-
     private void loginUser() {
         email = signInEmail.getText().toString().trim();
         password = signInPassword.getText().toString().trim();
@@ -224,6 +230,10 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
             public void onResponse(Call<Data> call, Response<Data> response) {
                 if (response.code() == 200) {
                     Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    Intent create_intent = new Intent(SignIn2Activity.this, Polls.class);
+                    create_intent.putExtra("name", name);
+                    create_intent.putExtra("email", email);
+                    startActivity(create_intent);
                 } else {
                     Toast.makeText(SignIn2Activity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
@@ -260,6 +270,7 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
         }
         return false;
     }
+
 
 
     @Override
@@ -320,7 +331,9 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
         startActivity(intent);
         finish();
 
+
     }
+
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {

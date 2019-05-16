@@ -23,6 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.primedsoft.primedpoll.Adapter.InterestAdapter;
+import com.primedsoft.primedpoll.CircleTransform;
 import com.primedsoft.primedpoll.R;
 import com.squareup.picasso.Picasso;
 
@@ -45,15 +46,15 @@ public class ProfileUser extends AppCompatActivity implements GoogleApiClient.On
         setSupportActionBar(mToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-        profile_img = findViewById(R.id.profile_image_user);
-        user_name = findViewById(R.id.username_user);
-        user_email = findViewById(R.id.email);
-        user_phone = findViewById(R.id.phone_no);
-        user_dob = findViewById(R.id.D_O_B);
+//        profile_img = findViewById(R.id.profile_image_user);
+//        user_name = findViewById(R.id.username_user);
+//        user_email = findViewById(R.id.email);
+//        user_phone = findViewById(R.id.phone_no);
+//        user_dob = findViewById(R.id.D_O_B);
 
         myInterest = findViewById(R.id.recycler_interest);
 ////        Rounded images using picasso
-//        Picasso.get().load().placeholder(R.drawable.profile_pic).transform(new CircleTransform()).into(profile_img);
+//        Picasso.get().load().placeholder(R.drawable.profile_pic).transform(new com.primedsoft.primedpoll.CircleTransform()).into(profile_img);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -70,7 +71,7 @@ String getPhotoUrl = getIntent().getStringExtra("profile_pic");
 
 user_name.setText(getName);
 user_email.setText(getEmail);
-Picasso.get().load(getPhotoUrl).into(profile_img);
+Picasso.get().load(getPhotoUrl).transform(new CircleTransform()).into(profile_img);
 //        logoutBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -115,6 +116,7 @@ Picasso.get().load(getPhotoUrl).into(profile_img);
             try {
                 Picasso.get()
                         .load(account.getPhotoUrl())
+                        .transform(new CircleTransform())
                         .into(profile_img);
             } catch (NullPointerException e) {
                 Toast.makeText(getApplicationContext(), "image not found", Toast.LENGTH_LONG).show();
@@ -132,9 +134,9 @@ Picasso.get().load(getPhotoUrl).into(profile_img);
 
     public void clickEdit(android.view.View v) {
         switch (v.getId()) {
-            case R.id.profile_image_user:
-//                do something
-                break;
+//            case R.id.profile_image_user:
+////                do something
+//                break;
             case R.id.username_user:
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ProfileUser.this);

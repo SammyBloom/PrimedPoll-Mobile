@@ -25,7 +25,8 @@ public class AnsweredPolls extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_answered_polls, container, false);
+        final View rootView1 = inflater.inflate(R.layout.fragment_answered_polls, container, false);
+        return rootView1;
     }
 
 }

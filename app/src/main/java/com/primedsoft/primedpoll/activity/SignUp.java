@@ -137,9 +137,9 @@ public class SignUp extends AppCompatActivity {
                     alertDialogCreate.show();
                 } else {
                     Toast.makeText(SignUp.this, "Email Already Taken", Toast.LENGTH_SHORT).show();
+                    signup_progress.setVisibility(View.INVISIBLE);
                 }
             }
-
 
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
