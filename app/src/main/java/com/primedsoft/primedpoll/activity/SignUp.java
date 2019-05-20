@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.primedsoft.primedpoll.Activities.SignIn2Activity;
 import com.primedsoft.primedpoll.Data;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.VerifyCode;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
 
@@ -57,7 +58,9 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(tac.isChecked()){
-                    userSignUp();
+                    Intent verifyIntent = new Intent(SignUp.this, VerifyCode.class);
+                    startActivity(verifyIntent);
+//                    userSignUp();
                 } else {
                     tac.setError("Accept our terms and conditions then proceed");
                     tac.requestFocus();

@@ -46,11 +46,11 @@ public class ProfileUser extends AppCompatActivity implements GoogleApiClient.On
         setSupportActionBar(mToolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
-//        profile_img = findViewById(R.id.profile_image_user);
-//        user_name = findViewById(R.id.username_user);
-//        user_email = findViewById(R.id.email);
-//        user_phone = findViewById(R.id.phone_no);
-//        user_dob = findViewById(R.id.D_O_B);
+        profile_img = findViewById(R.id.profile_image_user);
+        user_name = findViewById(R.id.username_user);
+        user_email = findViewById(R.id.email_user);
+        user_phone = findViewById(R.id.phone_no_user);
+        user_dob = findViewById(R.id.D_O_B_user);
 
         myInterest = findViewById(R.id.recycler_interest);
 ////        Rounded images using picasso

@@ -163,7 +163,7 @@ public class Polls extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.profile:
-                Intent profIntent = new Intent(Polls.this, ProfileUser.class);
+                Intent profIntent = new Intent(Polls.this, ProfileMain.class);
                 startActivity(profIntent);
                 break;
         }

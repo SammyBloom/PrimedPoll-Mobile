@@ -1,15 +1,13 @@
-package com.primedsoft.primedpoll.Activities;
+package com.primedsoft.primedpoll;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.primedsoft.primedpoll.R;
-
-public class MainActivity extends AppCompatActivity {
+public class CompleteRegistration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.complete_registration);
+        setContentView(R.layout.activity_complete_registration);
     }
 }

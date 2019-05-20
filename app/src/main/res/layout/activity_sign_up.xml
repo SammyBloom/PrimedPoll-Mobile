@@ -133,7 +133,7 @@
                 android:background="@drawable/curved_btn"
                 android:textColor="@color/colorWhite"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="175dp"
+                android:layout_marginTop="180dp"
                 android:elevation="8dp"
                 android:padding="4dp"/>
 
