@@ -9,10 +9,8 @@
         android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"  />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -30,21 +28,24 @@
         <activity android:name=".activity.ProfileMain" />
         <activity android:name=".activity.SignUp">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.ProfileUser"></activity>
+        <activity android:name=".activity.ProfileMain"></activity>
+        <activity android:name=".activity.SignUp"></activity>
+        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".Activities.MainActivity"></activity>
         <activity android:name=".Activities.SignIn2Activity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.AddNewInterest" />
+        <activity android:name=".Activities.AddNewInterest"></activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -65,7 +66,8 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-        </activity> <!-- <activity android:name=".Activities.DisplayActivity" /> -->
+        </activity>
+        <!-- <activity android:name=".Activities.DisplayActivity" /> -->
         <!-- <activity android:name=".Activities.SignInActivity"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -79,6 +81,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

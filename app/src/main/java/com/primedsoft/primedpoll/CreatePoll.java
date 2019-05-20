@@ -30,7 +30,7 @@ public class CreatePoll extends AppCompatActivity {
         setContentView(R.layout.activity_create_poll);
 
         //get the spinner from the xml.
-        Spinner dropdown = findViewById(R.id.spinner);
+        Spinner dropdown = findViewById(R.id.interest_spinner);
 //create a list of items for the spinner.
         String[] items = new String[]{"1", "2", "3"};
 //create an adapter to describe how the items are displayed, adapters are used in several places in android.
