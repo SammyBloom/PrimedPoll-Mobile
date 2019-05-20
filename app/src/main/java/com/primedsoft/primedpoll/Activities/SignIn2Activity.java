@@ -3,6 +3,8 @@ package com.primedsoft.primedpoll.Activities;
 import android.content.Intent;
 import android.content.pm.LauncherApps;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +42,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.primedsoft.primedpoll.CreatePoll;
 import com.primedsoft.primedpoll.Data;
+import com.primedsoft.primedpoll.Fragments.ChangePassword;
+import com.primedsoft.primedpoll.Fragments.ResetPassword;
 import com.primedsoft.primedpoll.R;
 import com.primedsoft.primedpoll.activity.ProfileUser;
 import com.primedsoft.primedpoll.activity.SignUp;
@@ -61,10 +66,10 @@ import retrofit2.Response;
 import retrofit2.http.HEAD;
 
 public class SignIn2Activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
-    EditText signInEmail, signInPassword;
-    String email, password;
-    AppCompatButton signInButton;
-    TextView signUpText;
+    EditText signInEmail, signInPassword, typeEmailHereEdit;
+    String email, password, typeEmailHere;
+    AppCompatButton signInButton, sendButton;
+    TextView signUpText, forgotPassword;
     private static final String TAG = "SignInActivity";
     private AppCompatImageButton googleSignInButton;
     private GoogleApiClient googleApiClient;
@@ -87,6 +92,8 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
         signInPassword = findViewById(R.id.sign_in_password);
         signInButton = findViewById(R.id.sign_in_button);
 signUpText = findViewById(R.id.sign_up_text);
+forgotPassword = findViewById(R.id.forgot_password);
+typeEmailHereEdit = findViewById(R.id.type_email_here);
 signUpText.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -220,6 +227,27 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 loginButton.performClick();
             }
         });
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayResetPasswordFrag();
+            }
+        });
+    }
+    private void displayResetPasswordFrag() {
+        ResetPassword resetPassword = ResetPassword.newInstance();
+        // Get the FragmentManager and start a transaction.
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager
+                .beginTransaction();
+
+        // Add the addNotesFragment.
+        fragmentTransaction.add(R.id.fragment_holder,
+                resetPassword).addToBackStack(null).commit();
+        // Set boolean flag to indicate fragment is open.
+
+
+
     }
 
     private void loginUser() {
@@ -236,6 +264,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
             public void onResponse(Call<Data> call, Response<Data> response) {
                 if (response.code() == 200) {
                     Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SignIn2Activity.this, CreatePoll.class));
                 } else {
                     Toast.makeText(SignIn2Activity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }

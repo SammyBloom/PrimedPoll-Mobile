@@ -7,7 +7,10 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
 @FormUrlEncoded
@@ -24,12 +27,18 @@ public interface ApiInterface {
     @POST("api/user/login")
     Call<Data> login(@Field("email") String email,
                         @Field("password") String password);
-@FormUrlEncoded
-   @POST("api/password/reset")
+    @FormUrlEncoded
+    @POST("api/password/reset")
     Call<Data> resetPassword(@Field("email") String email);
 
     @FormUrlEncoded
-    @POST("api/password/change ")
-    Call<Data> changePassword(@Field("email") String email);
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @PUT("api/password/change")
+    Call<Data> changePassword(@Field("email") String email,
+                            @Field("verifycode") String verifyCode,
+                              @Field("newpassword") String newPassword,
+                              @Field("verifypassword") String verifyPassword);
+
+
 
 }

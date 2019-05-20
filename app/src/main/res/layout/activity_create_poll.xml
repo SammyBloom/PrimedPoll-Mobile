@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CreatePoll"
 
     >
 
@@ -76,12 +75,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/roboto_thin"
-                        android:text="Category"
+                        android:text="Interest"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <Spinner
-                        android:id="@+id/spinner"
+                        android:id="@+id/interest_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:drawable/btn_dropdown"
@@ -96,6 +95,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/question"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
@@ -155,12 +155,12 @@
                     android:fontFamily="@font/roboto_thin"
                     android:text="Time (Duration)"
                     android:textColor="@color/colorBlack"
-
                     />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <Button
+            android:id="@+id/submit_button"
             android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
