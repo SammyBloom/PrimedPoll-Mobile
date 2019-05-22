@@ -13,32 +13,38 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiInterface {
-@FormUrlEncoded
+    @FormUrlEncoded
     @POST("api/register")
     Call<Data> register(@Field("email") String email,
-                     @Field("password") String password,
-                     @Field("password_confirmation") String confirmPassword);
+                        @Field("password") String password,
+                        @Field("password_confirmation") String confirmPassword);
 
     @GET("register/verify/{verifyToken}")
     Call<Data> verification(@Header("Authorization") String token);
 
-
     @FormUrlEncoded
     @POST("api/user/login")
     Call<Data> login(@Field("email") String email,
-                        @Field("password") String password);
+                     @Field("password") String password);
+
     @FormUrlEncoded
     @POST("api/password/reset")
     Call<Data> resetPassword(@Field("email") String email);
 
     @FormUrlEncoded
-    @Headers("Content-Type: application/x-www-form-urlencoded")
     @PUT("api/password/change")
-    Call<Data> changePassword(@Field("email") String email,
-                            @Field("verifycode") String verifyCode,
-                              @Field("newpassword") String newPassword,
-                              @Field("verifypassword") String verifyPassword);
+    Call<Data> changePassword(
+            @Field("verifycode") String verifyCode,
+            @Field("password") String password,
+            @Field("password_confirmation") String passwordConfirmation);
 
+    @PUT("api/complete/registration")
+    Call<Data> completeReg(
+            @Field("first_name") String verifyCode,
+            @Field("last_name") String newPassword,
+            @Field("phone") String verifyPassword,
+            @Field("dob") String dob,
+            @Field("interests") String interest);
 
 
 }

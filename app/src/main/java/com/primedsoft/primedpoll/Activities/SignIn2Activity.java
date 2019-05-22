@@ -272,8 +272,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
-                t.getMessage();
-                Toast.makeText(SignIn2Activity.this, "Connection Error! Restart Network", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignIn2Activity.this, t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
