@@ -23,7 +23,7 @@ public class SharedPrefManager {
 
     private Context mCtx;
 
-    private SharedPrefManager(Context context){
+    public SharedPrefManager(Context context){
         this.mCtx = context;
     }
 
@@ -40,16 +40,16 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putFloat("id", user.getId());
-        editor.putString("first_name", user.getFirst_name());
-        editor.putString("last_name", user.getLast_name());
+//        editor.putFloat("id", user.getId());
+//        editor.putString("first_name", user.getFirst_name());
+//        editor.putString("last_name", user.getLast_name());
         editor.putString("email", user.getEmail());
-        editor.putString("image", user.getImage());
-        editor.putString("phone", user.getPhone());
-        editor.putString("bio", user.getBio());
-        editor.putString("dob", user.getDob());
-        editor.putString("created_at", user.getCreated_at());
-        editor.putString("updated_at", user.getUpdated_at());
+//        editor.putString("image", user.getImage());
+//        editor.putString("phone", user.getPhone());
+//        editor.putString("bio", user.getBio());
+//        editor.putString("dob", user.getDob());
+//        editor.putString("created_at", user.getCreated_at());
+//        editor.putString("updated_at", user.getUpdated_at());
 
         editor.apply();
     }

@@ -14,11 +14,11 @@ public class User {
     private String created_at;
     private String updated_at;
 
-    public User(float id, String first_name, String last_name, String email, String phone, String bio, String image, String dob, String created_at, String updated_at) {
+    public User(float id, String first_name, String last_name, String mEmail, String phone, String bio, String image, String dob, String created_at, String updated_at) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.email = email;
+        this.email = mEmail;
         this.phone = phone;
         this.bio = bio;
         this.image = image;

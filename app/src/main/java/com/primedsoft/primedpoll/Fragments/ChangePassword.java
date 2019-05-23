@@ -21,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ChangePassword extends Fragment {
-EditText verifyCodeEdit, newPasswordEdit,verifyPasswordEdit, emailEdit;
+EditText verifyCodeEdit, newPasswordEdit,verifyPasswordEdit;
     private String verifyCode;
     private String newPassword;
     private String verifyPassword, email;
@@ -40,7 +40,6 @@ AppCompatButton done;
 //        email = getArguments() != null ? getArguments().getString("email") : null;
         View view =  inflater.inflate(R.layout.fragment_change_password, container, false);
         verifyCodeEdit = view.findViewById(R.id.verify_code);
-emailEdit = view.findViewById(R.id.input_email);
         newPasswordEdit = view.findViewById(R.id.input_new_password);
         verifyPasswordEdit = view.findViewById(R.id.input_verify_new_password);
 
@@ -56,18 +55,16 @@ done.setOnClickListener(new View.OnClickListener() {
     }
 
     private void passwordChange() {
-        email = emailEdit.getText().toString().trim();
         verifyCode = verifyCodeEdit.getText().toString().trim();
         newPassword = newPasswordEdit.getText().toString().trim();
         verifyPassword = verifyPasswordEdit.getText().toString().trim();
 
         ApiInterface apiInterface = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
-        Data data = new Data(email, verifyCode, newPassword, verifyPassword);
+        Data data = new Data(verifyCode, newPassword, verifyPassword);
         apiInterface.changePassword(
-                data.getEmail(),
                 data.getVerifyCode(),
-                data.getNewPassword(),
-                data.getVerifyPassword()
+                data.getPassword(),
+                data.getConfirmPassword()
         ).enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
@@ -84,7 +81,6 @@ done.setOnClickListener(new View.OnClickListener() {
     public static ChangePassword newInstance() {
         return new ChangePassword();
     }
-
 
 
 }

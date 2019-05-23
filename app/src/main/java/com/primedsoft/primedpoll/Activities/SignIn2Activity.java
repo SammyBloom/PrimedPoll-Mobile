@@ -39,6 +39,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.primedsoft.primedpoll.Data;
 import com.primedsoft.primedpoll.Fragments.ResetPassword;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.SharedPrefManager;
+import com.primedsoft.primedpoll.User;
 import com.primedsoft.primedpoll.activity.MainProfile;
 import com.primedsoft.primedpoll.activity.Polls;
 import com.primedsoft.primedpoll.activity.SignUp;
@@ -60,6 +62,7 @@ import retrofit2.Response;
 public class SignIn2Activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText signInEmail, signInPassword, typeEmailHereEdit;
     String email, password, typeEmailHere;
+    User mEmail;
     AppCompatButton signInButton, sendButton;
     TextView signUpText, forgotPassword;
     private static final String TAG = "SignInActivity";
@@ -259,6 +262,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                     Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     String token = loginResponse.getToken();
 //                    User myUser = loginResponse.getUser();
+//                    saveLoginDetails(mEmail);
 
                     Intent feedIntent = new Intent(SignIn2Activity.this, Polls.class);
                     feedIntent.putExtra("token", token);
@@ -270,8 +274,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
-                t.getMessage();
-                Toast.makeText(SignIn2Activity.this, "Connection Error! Restart Network", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignIn2Activity.this, t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -320,6 +323,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
             name = account != null ? account.getDisplayName() : null;
             email = account != null ? account.getEmail() : null;
             // you can store user data to SharedPreference
+
             AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
             firebaseAuthWithGoogle(credential);
         } else {
@@ -360,6 +364,10 @@ signUpText.setOnClickListener(new View.OnClickListener() {
         startActivity(intent);
         finish();
 
+    }
+
+    private void saveLoginDetails(User mEmail){
+        new SharedPrefManager(this).save(mEmail);
     }
 
 

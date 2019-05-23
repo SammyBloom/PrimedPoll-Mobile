@@ -37,19 +37,13 @@ public class Data {
         this.verified = verified;
     }
 
-    public Data(String email, String password, String cnf_password) {
-        this.email = email;
+
+    public Data(String verifyCode, String password, String cnf_password) {
+        this.verifyCode = verifyCode;
         this.password = password;
         this.passwordConfirmation = cnf_password;
     }
 
-    public String getNewPassword() {
-        return newPassword;
-    }
-
-    public void setNewPassword(String newPassword) {
-        this.newPassword = newPassword;
-    }
 
     public String getVerifyPassword() {
         return verifyPassword;
