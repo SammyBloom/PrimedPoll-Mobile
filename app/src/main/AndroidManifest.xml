@@ -9,8 +9,14 @@
         android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"  />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
 
     <application
         android:allowBackup="true"
@@ -19,33 +25,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".activity.MainProfile">
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name=".EditProfile" />
         <activity android:name=".VerifyCode"></activity>
         <activity android:name=".CompleteRegistration" />
         <activity android:name=".activity.Polls" />
         <activity android:name=".CreatePoll" />
-        <activity android:name=".activity.ProfileUser" />
         <activity android:name=".activity.ProfileMain" />
         <activity android:name=".activity.SignUp">
             <intent-filter>
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ProfileUser"></activity>
-        <activity android:name=".activity.ProfileMain"></activity>
-        <activity android:name=".activity.SignUp"></activity>
-        <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".Activities.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".Activities.SignIn2Activity">
             <intent-filter>
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.AddNewInterest"></activity>
+        <activity android:name=".Activities.AddNewInterest" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -66,8 +80,7 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
-        </activity>
-        <!-- <activity android:name=".Activities.DisplayActivity" /> -->
+        </activity> <!-- <activity android:name=".Activities.DisplayActivity" /> -->
         <!-- <activity android:name=".Activities.SignInActivity"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -81,7 +94,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

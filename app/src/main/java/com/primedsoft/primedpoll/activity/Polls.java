@@ -25,6 +25,8 @@ public class Polls extends AppCompatActivity {
     private SectionsPagerAdapter sectionsPagerAdapter;
     private TabLayout tabLayout;
     private Button createPolls;
+    private String token;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,9 @@ public class Polls extends AppCompatActivity {
                 startActivity(createIntent);
             }
         });
+
     }
+
 
     /**
      * Initialize the contents of the Activity's standard options menu.  You
@@ -160,10 +164,12 @@ public class Polls extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        token = getIntent().getStringExtra("token");
         int id = item.getItemId();
         switch (id) {
             case R.id.profile:
-                Intent profIntent = new Intent(Polls.this, ProfileMain.class);
+                Intent profIntent = new Intent(Polls.this, MainProfile.class);
+                profIntent.putExtra("token", token);
                 startActivity(profIntent);
                 break;
         }

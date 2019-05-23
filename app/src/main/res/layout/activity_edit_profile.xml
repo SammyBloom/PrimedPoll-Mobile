@@ -63,10 +63,9 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/username2"
@@ -82,9 +81,9 @@
                 android:src="@drawable/ic_mode_edit_black_24dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_gravity="right"/>
+                android:layout_alignParentRight="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
@@ -100,10 +99,9 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -118,15 +116,16 @@
 
             <ImageView
                 android:id="@+id/change_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_mode_edit_black_24dp"
                 android:clickable="true"
-                android:focusable="true" />
+                android:focusable="true"
+                android:layout_alignParentRight="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -140,14 +139,14 @@
 
             <ImageView
                 android:id="@+id/change_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_mode_edit_black_24dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_gravity="right"/>
+                android:layout_alignParentRight="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
@@ -163,10 +162,9 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/dob2"
@@ -177,14 +175,14 @@
 
             <ImageView
                 android:id="@+id/change_dob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:src="@drawable/ic_mode_edit_black_24dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_gravity="right"/>
+                android:layout_alignParentRight="true" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 

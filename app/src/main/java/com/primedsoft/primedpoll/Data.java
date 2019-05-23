@@ -7,6 +7,10 @@ public class Data {
     private String email;
     @SerializedName("password")
     private String password;
+    @SerializedName("message")
+    private String message;
+    @SerializedName("verified")
+    private boolean verified;
     @SerializedName("password_confirmation")
     private String passwordConfirmation;
     @SerializedName("verifycode")
@@ -15,11 +19,28 @@ public class Data {
     private String newPassword;
     @SerializedName("verifypassword")
     private String verifyPassword;
+    @SerializedName("success")
+    private boolean success;
+    @SerializedName("user")
+    User UserObject;
+    @SerializedName("token")
+    private String token;
+
+    public Data(Boolean success, String token, User UserOject){
+        this.success = success;
+        this.token = token;
+        this.UserObject = UserOject;
+    }
+
+    public Data(String message, Boolean verified){
+        this.message = message;
+        this.verified = verified;
+    }
 
     public Data(String email, String password, String cnf_password) {
         this.email = email;
         this.password = password;
-        passwordConfirmation = cnf_password;
+        this.passwordConfirmation = cnf_password;
     }
 
     public String getNewPassword() {
@@ -34,12 +55,52 @@ public class Data {
         return verifyPassword;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public boolean getVerified() {
+        return verified;
+    }
+
     public void setVerifyPassword(String verifyPassword) {
         this.verifyPassword = verifyPassword;
     }
 
     public String getPasswordConfirmation() {
         return passwordConfirmation;
+    }
+
+    public boolean getSuccess() {
+        return success;
+    }
+
+    public User getUser() {
+        return UserObject;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
+
+    public void setUser(User userObject) {
+        this.UserObject = userObject;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void setPasswordConfirmation(String passwordConfirmation) {

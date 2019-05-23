@@ -1,12 +1,10 @@
 package com.primedsoft.primedpoll.Activities;
 
 import android.content.Intent;
-import android.content.pm.LauncherApps;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
@@ -17,8 +15,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -29,11 +25,9 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,13 +36,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.primedsoft.primedpoll.CreatePoll;
 import com.primedsoft.primedpoll.Data;
-import com.primedsoft.primedpoll.Fragments.ChangePassword;
 import com.primedsoft.primedpoll.Fragments.ResetPassword;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.activity.MainProfile;
 import com.primedsoft.primedpoll.activity.Polls;
-import com.primedsoft.primedpoll.activity.ProfileUser;
 import com.primedsoft.primedpoll.activity.SignUp;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
@@ -64,7 +56,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.HEAD;
 
 public class SignIn2Activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText signInEmail, signInPassword, typeEmailHereEdit;
@@ -113,9 +104,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent feedsIntent = new Intent(SignIn2Activity.this, Polls.class);
-                startActivity(feedsIntent);
-//                loginUser();
+                loginUser();
             }
         });
 
@@ -265,9 +254,15 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 data.getPassword()).enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
+                Data loginResponse = response.body();
                 if (response.code() == 200) {
                     Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SignIn2Activity.this, CreatePoll.class));
+                    String token = loginResponse.getToken();
+//                    User myUser = loginResponse.getUser();
+
+                    Intent feedIntent = new Intent(SignIn2Activity.this, Polls.class);
+                    feedIntent.putExtra("token", token);
+                    startActivity(feedIntent);
                 } else {
                     Toast.makeText(SignIn2Activity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
@@ -357,7 +352,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
 
 
     private void gotoProfile() {
-        Intent intent = new Intent(SignIn2Activity.this, ProfileUser.class);
+        Intent intent = new Intent(SignIn2Activity.this, MainProfile.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("name", name);
         intent.putExtra("email", email);
