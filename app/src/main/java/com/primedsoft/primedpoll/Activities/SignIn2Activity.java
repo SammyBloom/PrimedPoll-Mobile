@@ -248,9 +248,9 @@ signUpText.setOnClickListener(new View.OnClickListener() {
         if (loginValidation()) return;
 
         ApiInterface apiInterface = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
-        Data data = new Data(email, password);
-        apiInterface.login(data.getEmail(),
-                data.getPassword()).enqueue(new Callback<Data>() {
+        Data data1 = new Data(email, password);
+        apiInterface.login(data1.getEmail(),
+                data1.getPassword()).enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
                 Data data = response.body();

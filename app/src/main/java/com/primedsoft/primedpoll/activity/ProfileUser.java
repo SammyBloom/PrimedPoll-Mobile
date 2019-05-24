@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -50,6 +51,15 @@ public class ProfileUser extends AppCompatActivity implements GoogleApiClient.On
         user_email = findViewById(R.id.email);
         user_phone = findViewById(R.id.phone_no);
         user_dob = findViewById(R.id.D_O_B);
+
+        profile_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, 0);
+            }
+        });
 
         myInterest = findViewById(R.id.recycler_interest);
 ////        Rounded images using picasso
