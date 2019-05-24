@@ -12,9 +12,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.primedsoft.primedpoll.Activities.SignIn2Activity;
 import com.primedsoft.primedpoll.Data;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.SharedPrefManager;
+import com.primedsoft.primedpoll.User;
 import com.primedsoft.primedpoll.VerifyCode;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
@@ -30,6 +33,7 @@ public class SignUp extends AppCompatActivity {
     private TextView signin_txt;
     private CheckBox tac;
     private ProgressBar signup_progress;
+    private SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class SignUp extends AppCompatActivity {
         tac = (CheckBox) findViewById(R.id.tac_signup);
         signup_progress = (ProgressBar) findViewById(R.id.signup_progressbar);
         signin_txt = findViewById(R.id.sign_in_text);
+        sharedPrefManager = new SharedPrefManager(this);
 
         signin_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +69,17 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        if (SharedPrefManager.getInstance(this).isLoggedIn()){
+//            Intent feedIntent = new Intent(SignUp.this, Polls.class);
+//            feedIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            startActivity(feedIntent);
+//        }
+//    }
 
     public void userSignUp(){
 
@@ -118,6 +134,14 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                     String token = response.body().getToken();
 
+                     User data1  = response.body().getUser();
+
+                    Gson gson = new Gson();
+                    String userInfoListJsonString = gson.toJson(data1);
+
+                    sharedPrefManager.save(userInfoListJsonString);
+
+
                     signup_progress.setVisibility(View.INVISIBLE);
 
                     Intent verifyIntent = new Intent(SignUp.this, VerifyCode.class);
@@ -142,7 +166,7 @@ public class SignUp extends AppCompatActivity {
 //                    // show it
 //                    alertDialogCreate.show();
                 } else {
-                    Toast.makeText(SignUp.this, "Email Already Taken", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                     signup_progress.setVisibility(View.INVISIBLE);
                 }
             }

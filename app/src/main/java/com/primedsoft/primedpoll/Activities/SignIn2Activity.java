@@ -78,6 +78,7 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
     private String id;
     private URL profile_pic = null;
     private String name;
+    SharedPrefManager mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,6 +230,18 @@ signUpText.setOnClickListener(new View.OnClickListener() {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (SharedPrefManager.getInstance(this).isLoggedIn()){
+            Intent feedIntent = new Intent(SignIn2Activity.this, Polls.class);
+            feedIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(feedIntent);
+        }
+    }
+
     private void displayResetPasswordFrag() {
         ResetPassword resetPassword = ResetPassword.newInstance();
         // Get the FragmentManager and start a transaction.
@@ -261,11 +274,17 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 if (response.code() == 200) {
                     Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     String token = loginResponse.getToken();
+
+//                    Add SharedPreference
+
+//                    mSharedPreferences = SharedPrefManager.getInstance(SignIn2Activity.this);
+//                            ((SharedPrefManager) mSharedPreferences).save(loginResponse.getUser());
 //                    User myUser = loginResponse.getUser();
 //                    saveLoginDetails(mEmail);
 
                     Intent feedIntent = new Intent(SignIn2Activity.this, Polls.class);
                     feedIntent.putExtra("token", token);
+                    feedIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(feedIntent);
                 } else {
                     Toast.makeText(SignIn2Activity.this, "Not logged in", Toast.LENGTH_SHORT).show();
@@ -366,9 +385,9 @@ signUpText.setOnClickListener(new View.OnClickListener() {
 
     }
 
-    private void saveLoginDetails(User mEmail){
-        new SharedPrefManager(this).save(mEmail);
-    }
+   // private void saveLoginDetails(User mEmail){
+   //     new SharedPrefManager(this).save(mEmail);
+  //  }
 
 
     @Override

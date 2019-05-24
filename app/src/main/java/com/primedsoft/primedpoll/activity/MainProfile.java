@@ -21,6 +21,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.primedsoft.primedpoll.Adapter.InterestAdapter;
 import com.primedsoft.primedpoll.EditProfile;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.SharedPrefManager;
+import com.primedsoft.primedpoll.User;
 
 public class MainProfile extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -77,7 +79,8 @@ public class MainProfile extends AppCompatActivity implements GoogleApiClient.On
 
     private void showUserDetails() {
 
-
+        User user = SharedPrefManager.getInstance(this).getSavedInfo();
+        profileEmail.setText(user.getEmail());
     }
 
     public void editProfile(){

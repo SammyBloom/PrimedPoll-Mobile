@@ -15,10 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.primedsoft.primedpoll.Activities.SignIn2Activity;
 import com.primedsoft.primedpoll.CreatePoll;
 import com.primedsoft.primedpoll.Fragments.AnsweredPolls;
 import com.primedsoft.primedpoll.Fragments.FeedFragment;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.SharedPrefManager;
 
 public class Polls extends AppCompatActivity {
     private ViewPager viewPager;
@@ -56,6 +58,17 @@ public class Polls extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (!SharedPrefManager.getInstance(this).isLoggedIn()){
+            Intent loginIntent = new Intent(Polls.this, SignIn2Activity.class);
+            loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(loginIntent);
+        }
     }
 
 

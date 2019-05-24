@@ -2,6 +2,9 @@ package com.primedsoft.primedpoll;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 public class SharedPrefManager {
 
@@ -35,15 +38,17 @@ public class SharedPrefManager {
         return myInstance;
     }
 
-    public void save(User user){
+    public void save(String user){
 
+
+        Toast.makeText(mCtx, user, Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
 //        editor.putFloat("id", user.getId());
-//        editor.putString("first_name", user.getFirst_name());
+        editor.putString("User",user);
 //        editor.putString("last_name", user.getLast_name());
-        editor.putString("email", user.getEmail());
+//        editor.putString("email", user.getEmail());
 //        editor.putString("image", user.getImage());
 //        editor.putString("phone", user.getPhone());
 //        editor.putString("bio", user.getBio());
@@ -51,35 +56,42 @@ public class SharedPrefManager {
 //        editor.putString("created_at", user.getCreated_at());
 //        editor.putString("updated_at", user.getUpdated_at());
 
+
         editor.apply();
+    }
+
+    public boolean isLoggedIn(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt("id", -1) != -1;
     }
 
     public User getSavedInfo(){
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("User", "");
+        User user = gson.fromJson(json, User.class);
 
         return new User(
-                sharedPreferences.getFloat(ID, 0),
-                sharedPreferences.getString(FIRSTNAME, ""),
-                sharedPreferences.getString(LASTNAME, ""),
-                sharedPreferences.getString(EMAIL, ""),
-                sharedPreferences.getString(PROFILE_PIC, ""),
-                sharedPreferences.getString(PHONE, ""),
-                sharedPreferences.getString(BIO, ""),
-                sharedPreferences.getString(DOB, ""),
-                sharedPreferences.getString(CREATED, ""),
-                sharedPreferences.getString(UPDATED, "")
+                sharedPreferences.getFloat(ID, -1),
+                sharedPreferences.getString(FIRSTNAME, null),
+                sharedPreferences.getString(LASTNAME, null),
+                sharedPreferences.getString(EMAIL, null),
+                sharedPreferences.getString(PROFILE_PIC, null),
+                sharedPreferences.getString(PHONE, null),
+                sharedPreferences.getString(BIO, null),
+                sharedPreferences.getString(DOB, null),
+                sharedPreferences.getString(CREATED, null),
+                sharedPreferences.getString(UPDATED, null)
         );
     }
 
-    public boolean logout(){
+    public void logout(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.clear();
         editor.apply();
-
-        return true;
     }
 
 }
