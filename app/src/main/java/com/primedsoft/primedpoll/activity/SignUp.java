@@ -108,7 +108,10 @@ public class SignUp extends AppCompatActivity {
         signup_progress.setVisibility(View.VISIBLE);
 
         ApiInterface apiInterface = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
-        Data data = new Data(email, password, cnf_password);
+        Data data = new Data();
+        data.setEmail(email);
+        data.setPassword(password);
+        data.setConfirmPassword(cnf_password);
         apiInterface.register(data.getEmail(),
                 data.getPassword(),
                 data.getConfirmPassword()).enqueue(new Callback<Data>() {
