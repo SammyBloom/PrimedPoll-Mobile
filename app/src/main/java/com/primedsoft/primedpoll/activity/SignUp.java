@@ -129,12 +129,13 @@ public class SignUp extends AppCompatActivity {
                 data.getConfirmPassword()).enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
+
                 if (response.code() == 200) {
 
                     Toast.makeText(SignUp.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                     String token = response.body().getToken();
 
-                     User data1  = response.body().getUser();
+                    User data1 = response.body().getUser();
 
                     Gson gson = new Gson();
                     String userInfoListJsonString = gson.toJson(data1);
@@ -147,6 +148,20 @@ public class SignUp extends AppCompatActivity {
                     Intent verifyIntent = new Intent(SignUp.this, VerifyCode.class);
                     verifyIntent.putExtra("token", token);
                     startActivity(verifyIntent);
+                } else {
+                    Toast.makeText(SignUp.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    signup_progress.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Data> call, Throwable t) {
+                t.getMessage();
+                Toast.makeText(SignUp.this, "Connection Error! Restart Network", Toast.LENGTH_LONG).show();
+                signup_progress.setVisibility(View.INVISIBLE);
+            }
+        });
+
 
 
 //                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(SignUp.this);
@@ -165,18 +180,6 @@ public class SignUp extends AppCompatActivity {
 //
 //                    // show it
 //                    alertDialogCreate.show();
-                } else {
-                    Toast.makeText(SignUp.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-                    signup_progress.setVisibility(View.INVISIBLE);
-                }
-            }
 
-            @Override
-            public void onFailure(Call<Data> call, Throwable t) {
-                t.getMessage();
-                Toast.makeText(SignUp.this, "Connection Error! Restart Network", Toast.LENGTH_LONG).show();
-                signup_progress.setVisibility(View.INVISIBLE);
-            }
-        });
     }
 }
