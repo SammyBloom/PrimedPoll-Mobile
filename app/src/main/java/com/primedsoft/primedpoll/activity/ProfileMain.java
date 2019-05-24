@@ -28,6 +28,6 @@ public class ProfileMain extends AppCompatActivity {
 
         profileName = findViewById(R.id.username);
         profileImage = findViewById(R.id.profile_image);
-        bio = findViewById(R.id.bio);
+//        bio = findViewById(R.id.bio);
     }
 }

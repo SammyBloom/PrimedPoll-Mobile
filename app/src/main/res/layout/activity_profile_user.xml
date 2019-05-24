@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.ProfileUser">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image_user"
                     android:layout_width="150dp"
@@ -70,7 +69,7 @@
                                 android:layout_gravity="center_horizontal" />
 
                             <TextView
-                                android:id="@+id/email"
+                                android:id="@+id/email_user"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="primedsoft@gmail.com"
@@ -80,7 +79,7 @@
                                 android:layout_gravity="center_horizontal"/>
 
                             <TextView
-                                android:id="@+id/phone_no"
+                                android:id="@+id/phone_no_user"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="08024587684"
@@ -90,7 +89,7 @@
                                 android:layout_gravity="center_horizontal"/>
 
                             <TextView
-                                android:id="@+id/D_O_B"
+                                android:id="@+id/D_O_B_user"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="14-04-1985"

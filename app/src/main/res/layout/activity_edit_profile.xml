@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditProfile">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/editProf_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Picture"
+            android:textSize="16sp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_img2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/profile_pic"/>
+
+            <ImageView
+                android:id="@+id/change_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_add_a_photo_black_24dp"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/black"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/username2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="User's name"/>
+
+            <ImageView
+                android:id="@+id/change_username"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_mode_edit_black_24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/black"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/email2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="User@gmail.com"/>
+
+            <ImageView
+                android:id="@+id/change_email"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_mode_edit_black_24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/phone2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="07031159652"/>
+
+            <ImageView
+                android:id="@+id/change_phone"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_mode_edit_black_24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@android:color/black"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basic Info"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/dob2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="12-03-1999"/>
+
+            <ImageView
+                android:id="@+id/change_dob"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_mode_edit_black_24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_alignParentRight="true" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
