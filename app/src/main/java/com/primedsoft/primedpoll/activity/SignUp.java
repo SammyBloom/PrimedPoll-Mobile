@@ -136,7 +136,7 @@ public class SignUp extends AppCompatActivity {
                     String token = response.body().getToken();
 
                     User data1 = response.body().getUser();
-
+                    ;
                     Gson gson = new Gson();
                     String userInfoListJsonString = gson.toJson(data1);
 

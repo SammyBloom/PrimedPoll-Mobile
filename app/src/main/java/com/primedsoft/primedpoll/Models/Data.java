@@ -1,6 +1,7 @@
 package com.primedsoft.primedpoll.Models;
 
 import com.google.gson.annotations.SerializedName;
+import com.primedsoft.primedpoll.User;
 
 import java.util.ArrayList;
 
@@ -11,18 +12,26 @@ public class Data {
     private String password;
     @SerializedName("password_confirmation")
     private String passwordConfirmation;
+    @SerializedName("verified")
+    private boolean verified;
     @SerializedName("verifycode")
     private String verifyCode;
+    @SerializedName("message")
+    private String message;
     @SerializedName("first_name")
     private String firstName;
     @SerializedName("last_name")
     private String lastName;
     @SerializedName("dob")
     private String dob;
+    @SerializedName("success")
+    private boolean success;
     @SerializedName("phone")
     private String phone;
     @SerializedName("token")
     private String token;
+    @SerializedName("user")
+    User UserObject;
     private Data data;
     private ArrayList<Data> dataArrayList;
     @SerializedName("interest")
@@ -43,6 +52,17 @@ public class Data {
 
     public void setInterestArrayList(ArrayList<Interest> interestArrayList) {
         this.interestArrayList = interestArrayList;
+    }
+
+    public Data(Boolean success, String token, User UserOject){
+        this.success = success;
+        this.token = token;
+        this.UserObject = UserOject;
+    }
+
+    public Data(String message, Boolean verified){
+        this.message = message;
+        this.verified = verified;
     }
 
     public String getToken() {
@@ -159,5 +179,37 @@ public class Data {
 
     public Data getData() {
         return data;
+    }
+
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public User getUser() {
+        return UserObject;
+    }
+
+    public void setUser(User userObject) {
+        UserObject = userObject;
     }
 }

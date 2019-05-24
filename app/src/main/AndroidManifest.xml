@@ -40,9 +40,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".Activities.CompleteReg"></activity>
-        <activity android:name=".activity.Polls" />
-        <activity android:name=".activity.ProfileUser" />
-        <activity android:name=".activity.ProfileMain" />
         <activity android:name=".activity.SignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +51,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".Activities.MainActivity"></activity>
         <activity android:name=".Activities.SignIn2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
