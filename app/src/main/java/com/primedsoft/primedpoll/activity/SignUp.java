@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.primedsoft.primedpoll.Activities.SignIn2Activity;
-import com.primedsoft.primedpoll.Data;
+import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.R;
 import com.primedsoft.primedpoll.SharedPrefManager;
 import com.primedsoft.primedpoll.User;

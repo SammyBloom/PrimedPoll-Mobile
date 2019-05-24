@@ -1,10 +1,11 @@
 package com.primedsoft.primedpoll.Activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -37,6 +39,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.primedsoft.primedpoll.Data;
+import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.Fragments.ResetPassword;
 import com.primedsoft.primedpoll.R;
 import com.primedsoft.primedpoll.SharedPrefManager;
@@ -62,7 +65,6 @@ import retrofit2.Response;
 public class SignIn2Activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText signInEmail, signInPassword, typeEmailHereEdit;
     String email, password, typeEmailHere;
-    User mEmail;
     AppCompatButton signInButton, sendButton;
     TextView signUpText, forgotPassword;
     private static final String TAG = "SignInActivity";
@@ -270,22 +272,13 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 data.getPassword()).enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
-                Data loginResponse = response.body();
+                Data data = response.body();
                 if (response.code() == 200) {
+                    String token = data != null ? data.getData().getToken() : null;
                     Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    String token = loginResponse.getToken();
-
-//                    Add SharedPreference
-
-//                    mSharedPreferences = SharedPrefManager.getInstance(SignIn2Activity.this);
-//                            ((SharedPrefManager) mSharedPreferences).save(loginResponse.getUser());
-//                    User myUser = loginResponse.getUser();
-//                    saveLoginDetails(mEmail);
-
-                    Intent feedIntent = new Intent(SignIn2Activity.this, Polls.class);
-                    feedIntent.putExtra("token", token);
-                    feedIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(feedIntent);
+                   Intent intent = new Intent(SignIn2Activity.this, AddNewInterest.class);
+                   intent.putExtra("token", token);
+                   startActivity(intent);
                 } else {
                     Toast.makeText(SignIn2Activity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
@@ -384,10 +377,6 @@ signUpText.setOnClickListener(new View.OnClickListener() {
         finish();
 
     }
-
-   // private void saveLoginDetails(User mEmail){
-   //     new SharedPrefManager(this).save(mEmail);
-  //  }
 
 
     @Override

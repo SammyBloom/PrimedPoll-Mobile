@@ -1,6 +1,9 @@
 package com.primedsoft.primedpoll.api;
 
-import com.primedsoft.primedpoll.Data;
+import com.primedsoft.primedpoll.Models.Data;
+import com.primedsoft.primedpoll.Models.Interest;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -50,5 +53,7 @@ public interface ApiInterface {
             @Field("dob") String dob,
             @Field("interests") String interest);
 
+    @GET("api/interest")
+    Call<ArrayList<Interest>> allInterest(@Header("Authorization") String token);
 
 }
