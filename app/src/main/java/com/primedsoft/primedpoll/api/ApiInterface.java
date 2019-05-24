@@ -24,7 +24,7 @@ public interface ApiInterface {
     Call<Data> verification(@Header("Authorization") String token);
 
     @FormUrlEncoded
-    @POST("api/user/login")
+    @POST("api/login")
     Call<Data> login(@Field("email") String email,
                      @Field("password") String password);
 
