@@ -1,13 +1,8 @@
 package com.primedsoft.primedpoll.Fragments;
 
 
-import android.app.Notification;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.primedsoft.primedpoll.Activities.SignIn2Activity;
-import com.primedsoft.primedpoll.CreatePoll;
-import com.primedsoft.primedpoll.Data;
+import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.R;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;

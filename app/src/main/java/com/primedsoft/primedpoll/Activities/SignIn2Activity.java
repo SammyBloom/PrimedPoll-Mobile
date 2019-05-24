@@ -1,13 +1,11 @@
 package com.primedsoft.primedpoll.Activities;
 
 import android.content.Intent;
-import android.content.pm.LauncherApps;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
@@ -18,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -29,11 +26,9 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,9 +37,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.primedsoft.primedpoll.CreatePoll;
-import com.primedsoft.primedpoll.Data;
-import com.primedsoft.primedpoll.Fragments.ChangePassword;
+import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.Fragments.ResetPassword;
 import com.primedsoft.primedpoll.R;
 import com.primedsoft.primedpoll.activity.ProfileUser;
@@ -63,7 +56,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.HEAD;
 
 public class SignIn2Activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     EditText signInEmail, signInPassword, typeEmailHereEdit;
@@ -262,9 +254,13 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 data.getPassword()).enqueue(new Callback<Data>() {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
+                Data data = response.body();
                 if (response.code() == 200) {
+                    String token = data != null ? data.getData().getToken() : null;
                     Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SignIn2Activity.this, CreatePoll.class));
+                   Intent intent = new Intent(SignIn2Activity.this, AddNewInterest.class);
+                   intent.putExtra("token", token);
+                   startActivity(intent);
                 } else {
                     Toast.makeText(SignIn2Activity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
