@@ -1,5 +1,7 @@
 package com.primedsoft.primedpoll.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +20,6 @@ import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.R;
 import com.primedsoft.primedpoll.SharedPrefManager;
 import com.primedsoft.primedpoll.User;
-import com.primedsoft.primedpoll.VerifyCode;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
 
@@ -136,20 +137,32 @@ public class SignUp extends AppCompatActivity {
                     String token = response.body().getToken();
 
                     User data1 = response.body().getUser();
-                    ;
+
                     Gson gson = new Gson();
                     String userInfoListJsonString = gson.toJson(data1);
 
                     sharedPrefManager.save(userInfoListJsonString);
 
-
                     signup_progress.setVisibility(View.INVISIBLE);
 
-                    Intent verifyIntent = new Intent(SignUp.this, VerifyCode.class);
-                    verifyIntent.putExtra("token", token);
-                    startActivity(verifyIntent);
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(SignUp.this);
+                    alertDialog.setTitle("You need to verify your account in other to login? Click Ok to proceed.");
+                    alertDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                            startActivity(intent);
+                            startActivity(Intent.createChooser(intent, "Send FeedBack"));
+                            SignUp.this.finish();
+                        }
+                    });
+                    AlertDialog alertDialogCreate = alertDialog.create();
+
+                    // show it
+                    alertDialogCreate.show();
                 } else {
-                    Toast.makeText(SignUp.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, response.message(), Toast.LENGTH_SHORT).show();
                     signup_progress.setVisibility(View.INVISIBLE);
                 }
             }
@@ -158,28 +171,7 @@ public class SignUp extends AppCompatActivity {
             public void onFailure(Call<Data> call, Throwable t) {
                 t.getMessage();
                 Toast.makeText(SignUp.this, "Connection Error! Restart Network", Toast.LENGTH_LONG).show();
-                signup_progress.setVisibility(View.INVISIBLE);
             }
         });
-
-
-
-//                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(SignUp.this);
-//                    alertDialog.setTitle("You need to verify your account in other to login? Click Ok to proceed.");
-//                    alertDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            Intent intent = new Intent(Intent.ACTION_MAIN);
-//                            intent.addCategory(Intent.CATEGORY_APP_EMAIL);
-//                            startActivity(intent);
-//                            startActivity(Intent.createChooser(intent, "Send FeedBack"));
-//                            SignUp.this.finish();
-//                        }
-//                    });
-//                    AlertDialog alertDialogCreate = alertDialog.create();
-//
-//                    // show it
-//                    alertDialogCreate.show();
-
     }
 }

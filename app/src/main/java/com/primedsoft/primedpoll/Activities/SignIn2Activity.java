@@ -1,11 +1,11 @@
 package com.primedsoft.primedpoll.Activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.Log;
@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -37,14 +36,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.primedsoft.primedpoll.Data;
-import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.Fragments.ResetPassword;
+import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.R;
-import com.primedsoft.primedpoll.SharedPrefManager;
-import com.primedsoft.primedpoll.User;
-import com.primedsoft.primedpoll.activity.MainProfile;
-import com.primedsoft.primedpoll.activity.Polls;
+import com.primedsoft.primedpoll.activity.ProfileUser;
 import com.primedsoft.primedpoll.activity.SignUp;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
@@ -79,7 +74,6 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
     private String id;
     private URL profile_pic = null;
     private String name;
-    SharedPrefManager mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,18 +225,6 @@ signUpText.setOnClickListener(new View.OnClickListener() {
             }
         });
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (SharedPrefManager.getInstance(this).isLoggedIn()){
-            Intent feedIntent = new Intent(SignIn2Activity.this, Polls.class);
-            feedIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(feedIntent);
-        }
-    }
-
     private void displayResetPasswordFrag() {
         ResetPassword resetPassword = ResetPassword.newInstance();
         // Get the FragmentManager and start a transaction.
@@ -367,7 +349,7 @@ signUpText.setOnClickListener(new View.OnClickListener() {
 
 
     private void gotoProfile() {
-        Intent intent = new Intent(SignIn2Activity.this, MainProfile.class);
+        Intent intent = new Intent(SignIn2Activity.this, ProfileUser.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("name", name);
         intent.putExtra("email", email);

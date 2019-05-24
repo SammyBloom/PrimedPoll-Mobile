@@ -29,17 +29,18 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainProfile"></activity>
-        <activity android:name=".EditProfile" />
-        <activity android:name=".VerifyCode"></activity>
-        <activity android:name=".CompleteRegistration" />
-        <activity android:name=".activity.Polls" />
-        <activity android:name=".activity.ProfileMain" />
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".Activities.CompleteReg"></activity>
+        <activity android:name=".activity.Polls" />
+        <activity android:name=".activity.ProfileUser" />
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".EditProfile" />
+        <activity android:name=".VerifyCode"></activity>
+        <activity android:name=".activity.ProfileMain" />
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".activity.SignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,11 +51,13 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.SignIn2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="@string/fb_login_protocol_scheme" />

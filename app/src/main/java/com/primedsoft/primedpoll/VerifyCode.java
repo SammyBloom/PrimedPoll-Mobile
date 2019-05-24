@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.primedsoft.primedpoll.Activities.CompleteReg;
+import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.api.RetrofitClient;
 
 import retrofit2.Call;
@@ -67,7 +69,7 @@ public class VerifyCode extends AppCompatActivity {
 
                     Toast.makeText(VerifyCode.this, "Account verified", Toast.LENGTH_LONG).show();
                     vProgressbar.setVisibility(View.INVISIBLE);
-                    Intent completeIntent = new Intent(VerifyCode.this, CompleteRegistration.class);
+                    Intent completeIntent = new Intent(VerifyCode.this, CompleteReg.class);
                     completeIntent.putExtra("token", token);
                     startActivity(completeIntent);
 
@@ -78,7 +80,7 @@ public class VerifyCode extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
-
+                Toast.makeText(VerifyCode.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 

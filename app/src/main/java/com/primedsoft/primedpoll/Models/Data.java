@@ -123,7 +123,7 @@ public class Data {
     public Data(String verifyCode, String password, String cnf_password) {
         this.verifyCode = verifyCode;
         this.password = password;
-        passwordConfirmation = cnf_password;
+        this.passwordConfirmation = cnf_password;
     }
 
     public String getPasswordConfirmation() {

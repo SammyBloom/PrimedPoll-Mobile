@@ -1,5 +1,7 @@
 package com.primedsoft.primedpoll;
 
+import com.primedsoft.primedpoll.Models.Data;
+
 public class DataResponse {
 
     Data DataObject;
