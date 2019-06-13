@@ -39,6 +39,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.primedsoft.primedpoll.Fragments.ResetPassword;
 import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.activity.Polls;
 import com.primedsoft.primedpoll.activity.ProfileUser;
 import com.primedsoft.primedpoll.activity.SignUp;
 import com.primedsoft.primedpoll.api.ApiInterface;
@@ -82,14 +83,14 @@ public class SignIn2Activity extends AppCompatActivity implements GoogleApiClien
         signInEmail = findViewById(R.id.sign_in_email);
         signInPassword = findViewById(R.id.sign_in_password);
         signInButton = findViewById(R.id.sign_in_button);
-signUpText = findViewById(R.id.sign_up_text);
-forgotPassword = findViewById(R.id.forgot_password);
-typeEmailHereEdit = findViewById(R.id.type_email_here);
-signUpText.setOnClickListener(new View.OnClickListener() {
+        signUpText = findViewById(R.id.sign_up_text);
+        forgotPassword = findViewById(R.id.forgot_password);
+        typeEmailHereEdit = findViewById(R.id.type_email_here);
+        signUpText.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(SignIn2Activity.this, SignUp.class));
-    }
+                startActivity(new Intent(SignIn2Activity.this, SignUp.class));
+            }
 });
         signUpText = findViewById(R.id.sign_up_text);
         signUpText.setOnClickListener(new View.OnClickListener() {
@@ -249,6 +250,8 @@ signUpText.setOnClickListener(new View.OnClickListener() {
 
         ApiInterface apiInterface = RetrofitInstance.getRetrofitInstance().create(ApiInterface.class);
         Data data1 = new Data(email, password);
+        data1.setEmail(email);
+        data1.setPassword(password);
         apiInterface.login(data1.getEmail(),
                 data1.getPassword()).enqueue(new Callback<Data>() {
             @Override
@@ -256,9 +259,9 @@ signUpText.setOnClickListener(new View.OnClickListener() {
                 Data data = response.body();
                 if (response.code() == 200) {
                     String token = data != null ? data.getData().getToken() : null;
-                    Toast.makeText(SignIn2Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                   Intent intent = new Intent(SignIn2Activity.this, AddNewInterest.class);
-                   intent.putExtra("token", token);
+                    Toast.makeText(SignIn2Activity.this, token, Toast.LENGTH_SHORT).show();
+                   Intent intent = new Intent(SignIn2Activity.this, Polls.class);
+                   intent.putExtra("token", "Bearer " + token);
                    startActivity(intent);
                 } else {
                     Toast.makeText(SignIn2Activity.this, "Not logged in", Toast.LENGTH_SHORT).show();

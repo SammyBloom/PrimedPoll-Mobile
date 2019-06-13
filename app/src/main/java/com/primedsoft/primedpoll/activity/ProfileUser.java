@@ -23,20 +23,26 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.gson.Gson;
 import com.primedsoft.primedpoll.Adapter.InterestAdapter;
+import com.primedsoft.primedpoll.EditProfile;
 import com.primedsoft.primedpoll.R;
+import com.primedsoft.primedpoll.SharedPrefManager;
+import com.primedsoft.primedpoll.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
 public class ProfileUser extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    private TextView user_name, user_email, user_phone, user_dob;
+    private TextView user_name, user_email, user_phone, user_dob, editProfile;
     private ImageView profile_img;
     private RecyclerView myInterest;
     private InterestAdapter myAdapter;
     private GoogleSignInOptions gso;
     private GoogleApiClient googleApiClient;
+    private String token;
+    private SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +57,20 @@ public class ProfileUser extends AppCompatActivity implements GoogleApiClient.On
         user_email = findViewById(R.id.email);
         user_phone = findViewById(R.id.phone_no);
         user_dob = findViewById(R.id.D_O_B);
+        editProfile = findViewById(R.id.edit_profile);
 
-        profile_img.setOnClickListener(new View.OnClickListener() {
+        //        Get token from string
+        token = getIntent().getStringExtra("token");
+        Toast.makeText(ProfileUser.this, token, Toast.LENGTH_LONG).show();
+
+//        getUserInfoFromSharedPreferences();
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(galleryIntent, 0);
+                Intent goEditProfile = new Intent(ProfileUser.this, EditProfile.class);
+                goEditProfile.putExtra("token", token);
+                startActivity(goEditProfile);
             }
         });
 
@@ -74,13 +87,13 @@ public class ProfileUser extends AppCompatActivity implements GoogleApiClient.On
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-String getName = getIntent().getStringExtra("name");
-String getEmail = getIntent().getStringExtra("email");
-String getPhotoUrl = getIntent().getStringExtra("profile_pic");
+//String getName = getIntent().getStringExtra("name");
+//String getEmail = getIntent().getStringExtra("email");
+//String getPhotoUrl = getIntent().getStringExtra("profile_pic");
 
-user_name.setText(getName);
-user_email.setText(getEmail);
-Picasso.get().load(getPhotoUrl).into(profile_img);
+//user_name.setText(getName);
+//user_email.setText(getEmail);
+//Picasso.get().load(getPhotoUrl).into(profile_img);
 //        logoutBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -106,12 +119,12 @@ Picasso.get().load(getPhotoUrl).into(profile_img);
         OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
         if (opr.isDone()) {
             GoogleSignInResult result = opr.get();
-            handleSignInResult(result);
+//            handleSignInResult(result);
         } else {
             opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
                 @Override
                 public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
-                    handleSignInResult(googleSignInResult);
+//                    handleSignInResult(googleSignInResult);
                 }
             });
         }
@@ -138,6 +151,13 @@ Picasso.get().load(getPhotoUrl).into(profile_img);
     private void gotoMainActivity() {
         Intent mIntent = new Intent(this, MainActivity.class);
         startActivity(mIntent);
+    }
+
+    private void getUserInfoFromSharedPreferences(){
+        Gson gson = new Gson();
+        String userInfoListJsonString = sharedPrefManager.getSavedInfo().toString();
+        User user = gson.fromJson(userInfoListJsonString, User.class);
+        user_email.setText(user.getEmail());
     }
 
     public void clickEdit(android.view.View v) {

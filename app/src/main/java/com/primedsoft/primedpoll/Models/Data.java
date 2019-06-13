@@ -20,6 +20,8 @@ public class Data {
     private String message;
     @SerializedName("first_name")
     private String firstName;
+    @SerializedName("image")
+    private String image;
     @SerializedName("last_name")
     private String lastName;
     @SerializedName("dob")
@@ -152,7 +154,6 @@ public class Data {
 
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -211,5 +212,13 @@ public class Data {
 
     public void setUser(User userObject) {
         UserObject = userObject;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -19,7 +19,7 @@ import com.primedsoft.primedpoll.Activities.SignIn2Activity;
 import com.primedsoft.primedpoll.Models.Data;
 import com.primedsoft.primedpoll.R;
 import com.primedsoft.primedpoll.SharedPrefManager;
-import com.primedsoft.primedpoll.User;
+import com.primedsoft.primedpoll.VerifyCode;
 import com.primedsoft.primedpoll.api.ApiInterface;
 import com.primedsoft.primedpoll.api.RetrofitInstance;
 
@@ -139,7 +139,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, response.body().getMessage(), Toast.LENGTH_LONG).show();
                     String token = response.body().getToken();
 
-                    User data1 = response.body().getUser();
+                    Data data1 = response.body().getData();
 
                     Gson gson = new Gson();
                     String userInfoListJsonString = gson.toJson(data1);
@@ -153,11 +153,13 @@ public class SignUp extends AppCompatActivity {
                     alertDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_APP_EMAIL);
-                            startActivity(intent);
-                            startActivity(Intent.createChooser(intent, "Send FeedBack"));
-                            SignUp.this.finish();
+                            Intent verifyIntent = new Intent(SignUp.this, VerifyCode.class);
+                            startActivity(verifyIntent);
+//                            Intent intent = new Intent(Intent.ACTION_MAIN);
+//                            intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+//                            startActivity(intent);
+//                            startActivity(Intent.createChooser(intent, "Send FeedBack"));
+//                            SignUp.this.finish();
                         }
                     });
                     AlertDialog alertDialogCreate = alertDialog.create();
@@ -174,6 +176,7 @@ public class SignUp extends AppCompatActivity {
             public void onFailure(Call<Data> call, Throwable t) {
                 t.getMessage();
                 Toast.makeText(SignUp.this, "Connection Error! Restart Network", Toast.LENGTH_LONG).show();
+                signup_progress.setVisibility(View.INVISIBLE);
             }
         });
     }

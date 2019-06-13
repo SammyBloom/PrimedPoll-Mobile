@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 public class SharedPrefManager {
 
     private static final String SHARED_PREF_NAME = "my_shared_pref_name";
@@ -38,15 +36,15 @@ public class SharedPrefManager {
         return myInstance;
     }
 
-    public void save(String user){
+    public void save(String data){
 
 
-        Toast.makeText(mCtx, user, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mCtx, data, Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
 //        editor.putFloat("id", user.getId());
-        editor.putString("User",user);
+        editor.putString("Data",data);
 //        editor.putString("last_name", user.getLast_name());
 //        editor.putString("email", user.getEmail());
 //        editor.putString("image", user.getImage());
@@ -55,9 +53,14 @@ public class SharedPrefManager {
 //        editor.putString("dob", user.getDob());
 //        editor.putString("created_at", user.getCreated_at());
 //        editor.putString("updated_at", user.getUpdated_at());
-
-
         editor.apply();
+    }
+
+    public void saveImage(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("imagepath","/sdcard/imh.jpeg");
+        editor.commit();
     }
 
     public boolean isLoggedIn(){
@@ -65,12 +68,12 @@ public class SharedPrefManager {
         return sharedPreferences.getInt("id", -1) != -1;
     }
 
-    public User getSavedInfo(){
+    public User getSavedInfo() {
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("User", "");
-        User user = gson.fromJson(json, User.class);
+//        Gson gson = new Gson();
+//        String json = sharedPreferences.getString("User", "");
+//        User user = gson.fromJson(json, User.class);
 
         return new User(
                 sharedPreferences.getFloat(ID, -1),
